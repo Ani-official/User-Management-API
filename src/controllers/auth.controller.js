@@ -59,13 +59,13 @@ exports.login = async (req, res, next) => {
         // Find user by username
         const user = await User.findOne({ username });
         if (!user) {
-            return res.status(401).json({ message: 'Invalid credentials' }); // Changed from 403 to 401
+            return res.status(401).json({ message: 'Invalid credentials' }); 
         }
 
         // Verify password
         const isValidPassword = await user.comparePassword(password);
         if (!isValidPassword) {
-            return res.status(401).json({ message: 'Invalid credentials' }); // Changed from 403 to 401
+            return res.status(401).json({ message: 'Invalid credentials' }); 
         }
 
         // Generate JWT token with expiry info
